@@ -7,7 +7,7 @@ if letter.islower():
 else:
     letter2 = letter.lower()
 
-count = count2 = 0
+count = 0
 with open('text_task2.TXT') as file:
     for line in file:
         count += line.count(letter) + line.count(letter2)
