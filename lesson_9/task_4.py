@@ -8,17 +8,21 @@
 import csv
 from statistics import mean
 
+decorator_cache = {}
+
 
 def decorator(func):
-    decorator_cache = {}
 
     def wrapper(*args, **kwargs):
-        if 'result' not in decorator_cache:
-            decorator_cache['result'] = func(*args, **kwargs)
-            print('result saved')
-        else:
-            print('already in memory')
-        return decorator_cache['result']
+        value = decorator_cache.get(args)
+        print(f'Cache_storage: {decorator_cache}')
+        if value:
+            print('from cache')
+            return value
+        print('without cache')
+        res = func(*args, **kwargs)
+        decorator_cache[args] = res
+        return res
     return wrapper
 
 
@@ -88,12 +92,12 @@ while True:
 
     elif choice == 1:
         company_name = input('Input company name: ')
-        result_choice1 = find_info_by_name(company_name=company_name)
+        result_choice1 = find_info_by_name(company_name)
         print(result_choice1)
 
     elif choice == 2:
         sector_name = input('Input sector name: ')
-        result_choice2 = get_all_companies_by_sector(sector_name=sector_name)
+        result_choice2 = get_all_companies_by_sector(sector_name)
         print(result_choice2)
 
     elif choice == 3:
