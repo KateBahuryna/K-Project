@@ -8,14 +8,7 @@ list_joined = set(list1 + list2)
 print(list_joined)
 
 result = {}
+
 for key in list_joined:
-    if first_dict.get(key):
-        first = first_dict[key]
-    else:
-        first = None
-    if second_dict.get(key):
-        second = second_dict[key]
-    else:
-        second = None
-    result[key] = [first, second]
+    result[key] = [first_dict.get(key), second_dict.get(key)]
 print(result)
