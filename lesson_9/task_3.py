@@ -17,7 +17,7 @@ def calculate_route(coord: tuple) -> int:
             break
         x1, y1 = point
         x2, y2 = coord[index+1]
-        distance += ((x2-x1) ** 2 + (y2-y1)) ** 0.5
+        distance += ((x2-x1) ** 2 + (y2-y1) ** 2) ** 0.5
     return distance
 
 
