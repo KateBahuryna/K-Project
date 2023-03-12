@@ -14,9 +14,11 @@ def write_in_database(new_string):
 
 
 def change_info_in_database(new_database):
-    with open('sp500.csv', 'r') as file:
-        headlines = csv.DictReader(file).fieldnames
-    with open('sp500.csv', 'w') as file:
-        writer = csv.DictWriter(file, fieldnames=headlines)
+    with open('sp500.csv', 'w+') as file:
+        fieldnames = ["Symbol", "Name", "Sector", "Price", "Price/Earnings",
+                      "Dividend Yield", "Earnings/Share", "52 Week Low",
+                      "52 Week High", "Market Cap", "EBITDA", "Price/Sales",
+                      "Price/Book", "SEC Filings"]
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(new_database)
